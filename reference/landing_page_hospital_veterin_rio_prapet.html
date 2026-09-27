@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prapet | Hospital Veterinário Popular 24h em Fortaleza</title>
+  <meta name="description" content="Hospital Veterinário Popular no José Walter, Fortaleza. Atendimento 24 horas para cães e gatos, consultas, especialidades, cirurgias, exames e internação com valores acessíveis.">
+  
+  <!-- Google Fonts: Poppins (Design System) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            prapet: {
+              navy: '#102F57',       // --navy-900 (fundos escuros, texto principal)
+              blue: '#228CC6',       // --blue-500 (azul intermediário e destaques)
+              light: '#CBDDEE',      // --blue-100 (fundo claro institucional)
+              red: '#CC1019',        // --red-600 (CTAs primários e badges)
+              redHover: '#b50d15',
+              surface: '#F2F2F2',    // --surface-soft (cards suaves e rodapé)
+              darkTextMuted: '#CBDDEE'
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          maxWidth: {
+            'prapet': '1256px',
+          },
+          borderRadius: {
+            'btn': '11px',
+            'card': '16px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #102F57;
+      background-color: #FFFFFF;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Utilitário para foco de acessibilidade */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #CC1019;
+      outline-offset: 2px;
+    }
+
+    /* Linhas divisórias sutis entre blocos cromáticos */
+    .section-border-top {
+      border-top: 4px solid #FFFFFF;
+    }
+    
+    .section-border-bottom {
+      border-bottom: 4px solid #FFFFFF;
+    }
+
+    /* Efeito de elevação sutil e transições suaves nos cards */
+    .prapet-card {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    }
+    .prapet-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(16, 47, 87, 0.08);
+    }
+
+    /* Ícone do despertador SVG 24 horas idêntico ao do mockup */
+    .clock-hand {
+      transform-origin: 50% 50%;
+    }
+  </style>
+</head>
+<body class="selection:bg-prapet-red selection:text-white">
+
+  <!-- TOPO / CABEÇALHO (Sticky) -->
+  <header id="header" class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+    <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logotipo Oficial Prapet Reconstruído em SVG -->
+      <a href="#hero" class="flex items-center gap-3 group" aria-label="Hospital Veterinário Prapet - Início">
+        <div class="relative w-10 h-10 flex-shrink-0">
+          <svg viewBox="0 0 120 120" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Coração estilizado em duas metades (azul escuro e vermelho) -->
+            <path d="M60 105C60 105 15 76 15 38C15 22 27 10 43 10C51.5 10 57 14 60 18C63 14 68.5 10 77 10C93 10 105 22 105 38C105 76 60 105 60 105Z" fill="#102F57"/>
+            <path d="M60 105C60 105 60 18 60 18C63 14 68.5 10 77 10C93 10 105 22 105 38C105 76 60 105 60 105Z" fill="#CC1019"/>
+            <!-- Silhueta estilizada de cão e gato com cruz médica no interior -->
+            <path d="M43 28C38 31 34 37 34 45C34 56 42 66 52 70L60 72L68 70C78 66 86 56 86 45C86 37 82 31 77 28C72 35 68 46 60 48C52 46 48 35 43 28Z" fill="#FFFFFF"/>
+            <!-- Cruz médica veterinária vermelha no centro -->
+            <rect x="56" y="44" width="8" height="22" rx="2" fill="#CC1019"/>
+            <rect x="49" y="51" width="22" height="8" rx="2" fill="#CC1019"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-2xl tracking-tight text-prapet-red leading-none font-sans flex items-center">
+            PRAPET
+          </span>
+          <span class="text-[9px] font-bold tracking-[0.22em] text-prapet-navy uppercase leading-tight mt-0.5">
+            HOSPITAL VETERINÁRIO
+          </span>
+        </div>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center gap-7 text-[15px] font-semibold text-prapet-navy">
+        <a href="#servicos" class="hover:text-prapet-blue transition-colors">Serviços</a>
+        <a href="#especialidades" class="hover:text-prapet-blue transition-colors">Especialidades</a>
+        <a href="#sobre" class="hover:text-prapet-blue transition-colors">Sobre o Prapet</a>
+        <a href="#localizacao" class="hover:text-prapet-blue transition-colors">Localização</a>
+        <a href="#contato" class="hover:text-prapet-blue transition-colors">Contato</a>
+      </nav>
+
+      <!-- Botão CTA Superior & Botão Mobile -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/5585921667824?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20e%20atendimento%20no%20Prapet" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center justify-center px-6 py-2.5 bg-prapet-red hover:bg-prapet-redHover text-white text-[15px] font-bold rounded-btn transition-colors shadow-sm active:scale-98">
+          Fale com o Prapet
+        </a>
+
+        <!-- Botão Menu Mobile -->
+        <button id="mobileMenuBtn" aria-label="Abrir menu de navegação" class="md:hidden text-prapet-navy p-2 hover:bg-gray-100 rounded-lg">
+          <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Dropdown Mobile -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-5 shadow-lg">
+      <nav class="flex flex-col gap-4 text-base font-semibold text-prapet-navy">
+        <a href="#servicos" class="mobile-link hover:text-prapet-blue py-1">Serviços</a>
+        <a href="#especialidades" class="mobile-link hover:text-prapet-blue py-1">Especialidades</a>
+        <a href="#sobre" class="mobile-link hover:text-prapet-blue py-1">Sobre o Prapet</a>
+        <a href="#localizacao" class="mobile-link hover:text-prapet-blue py-1">Localização</a>
+        <a href="#contato" class="mobile-link hover:text-prapet-blue py-1">Contato</a>
+        <div class="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+          <span>Plantão 24 Horas</span>
+          <span class="font-bold text-prapet-blue">(85) 92166-7824</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="bg-prapet-light pt-12 pb-16 lg:pt-20 lg:pb-24">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          <!-- Coluna Textual Esquerda -->
+          <div class="lg:col-span-7 flex flex-col items-start">
+            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-prapet-navy mb-3">
+              HOSPITAL VETERINÁRIO POPULAR • 24H
+            </span>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-[58px] font-extrabold text-prapet-navy leading-[1.08] tracking-tight mb-5 max-w-xl">
+              Hospital Veterinário Popular em Fortaleza.
+            </h1>
+            
+            <p class="text-lg sm:text-[20px] text-prapet-blue font-medium leading-relaxed mb-8 max-w-lg">
+              Prapet já está atendendo cães e gatos no José Walter, com atendimento 24h, diferentes serviços e especialidades reunidos em um só lugar.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4 w-full sm:w-auto">
+              <a href="https://wa.me/5585921667824?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20atendimento%20no%20Prapet" target="_blank" rel="noopener noreferrer"
+                 class="w-full sm:w-auto text-center px-7 py-3.5 bg-prapet-red hover:bg-prapet-redHover text-white font-bold text-base rounded-btn transition-colors shadow-sm">
+                Fale com o Prapet
+              </a>
+            </div>
+
+            <!-- Identificação de localidade no Hero -->
+            <p class="text-sm font-semibold text-prapet-blue tracking-wide mt-2">
+              José Walter • Fortaleza, Ceará
+            </p>
+          </div>
+
+          <!-- Coluna Imagem Direita (Fotografia Veterinária com cão e gato) -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-[500px] aspect-[500/445] rounded-card overflow-hidden shadow-[0_12px_30px_rgba(16,47,87,0.12)] bg-prapet-navy">
+              <img 
+                src="https://images.unsplash.com/photo-1628009368231-7bb3cfc38281?auto=format&fit=crop&w=1000&q=80" 
+                alt="Equipe veterinária do Prapet prestando atendimento afetuoso a um pet na clínica"
+                class="w-full h-full object-cover object-center"
+                loading="eager"
+                onerror="this.src='https://placehold.co/1000x890/102F57/CBDDEE?text=Prapet+Hospital+Veterinario'"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: SERVIÇOS (Estrutura completa para cuidar do seu pet em cada etapa) -->
+    <section id="servicos" class="bg-prapet-navy py-16 lg:py-24 text-white">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Cabeçalho da seção -->
+        <div class="mb-10 lg:mb-12">
+          <h2 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight mb-2">
+            Estrutura completa para cuidar do seu pet em cada etapa
+          </h2>
+          <p class="text-base sm:text-lg text-prapet-darkTextMuted font-normal max-w-3xl">
+            Diferentes cuidados veterinários reunidos em um só lugar, para acompanhar as necessidades de cães e gatos.
+          </p>
+        </div>
+
+        <!-- Grade 5x2 (10 Cards brancos com cantos arredondados) -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 sm:gap-4">
+          
+          <!-- Card 1 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Consulta clínica</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Atendimento ágil</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Consulta com especialistas</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Corpo clínico dedicado</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Vacinação</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Imunização preventiva</span>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Exames laboratoriais</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Resultados rápidos</span>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Exames de imagem</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Raio-X e Ultrassom</span>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Internação para cães, gatos e infectocontagiosos</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Alas isoladas e monitoradas</span>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Cirurgia geral e especializada</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Bloco cirúrgico equipado</span>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Medicina intensiva</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Suporte para casos graves</span>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Atendimento 24 horas</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Portas abertas sempre</span>
+          </div>
+
+          <!-- Card 10 -->
+          <div class="prapet-card bg-white text-prapet-navy rounded-card p-5 min-h-[110px] flex flex-col justify-between">
+            <span class="text-[17px] font-bold leading-snug">Documentação para viagens</span>
+            <span class="text-xs text-prapet-blue font-semibold mt-2">Atestados e laudos</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO: 24 HORAS (Banda Azul Médio) -->
+    <section class="bg-prapet-blue py-14 text-white">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 max-w-4xl mx-auto">
+          
+          <!-- Ícone do Despertador em contorno estilizado em Azul Marinho -->
+          <div class="flex-shrink-0" aria-hidden="true">
+            <svg class="w-20 h-20 sm:w-24 sm:h-24 text-prapet-navy" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Sino esquerdo e direito -->
+              <path d="M22 24 L32 14" stroke-width="8" />
+              <path d="M78 24 L68 14" stroke-width="8" />
+              <!-- Corpo principal circular -->
+              <circle cx="50" cy="54" r="34" stroke-width="7" fill="transparent" />
+              <!-- Pés de apoio -->
+              <path d="M28 84 L20 92" stroke-width="7" />
+              <path d="M72 84 L80 92" stroke-width="7" />
+              <!-- Ponteiros do relógio indicando prontidão -->
+              <line x1="50" y1="54" x2="50" y2="36" stroke-width="7" />
+              <line x1="50" y1="54" x2="66" y2="54" stroke-width="7" />
+            </svg>
+          </div>
+
+          <!-- Bloco textual -->
+          <div class="flex flex-col text-center md:text-left">
+            <span class="text-xs font-bold uppercase tracking-wider text-white mb-1.5 opacity-90">
+              24 HORAS • TODOS OS DIAS
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-prapet-navy leading-tight mb-2">
+              Cuidado veterinário 24 horas
+            </h2>
+            <p class="text-base sm:text-lg text-white font-normal leading-relaxed max-w-2xl">
+              O Prapet oferece suporte veterinário 24 horas por dia, inclusive quando seu pet precisa de atendimento fora dos horários convencionais.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: MANIFESTO DE ACESSIBILIDADE (Popular é cuidado) -->
+    <section class="bg-prapet-light py-16 lg:py-24">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center gap-8 lg:gap-14 max-w-4xl mx-auto">
+          
+          <!-- Bloco Quadrado Vermelho Editorial -->
+          <div class="flex-shrink-0 w-60 h-60 sm:w-64 sm:h-64 bg-prapet-red rounded-card flex items-center justify-center p-6 text-center shadow-md">
+            <span class="text-white text-3xl sm:text-[34px] font-extrabold leading-tight tracking-tight">
+              Popular<br>é cuidado
+            </span>
+          </div>
+
+          <!-- Texto explicativo à direita -->
+          <div class="flex flex-col">
+            <h2 class="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-prapet-navy leading-tight tracking-tight mb-4">
+              Cuidado veterinário mais acessível
+            </h2>
+            <p class="text-lg text-prapet-navy leading-relaxed font-normal">
+              O Prapet é um Hospital Veterinário Popular que amplia o acesso aos cuidados veterinários no José Walter e região, reunindo estrutura hospitalar, serviços e especialidades com preços mais acessíveis.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: ESPECIALIDADES (Cuidado especializado quando seu pet precisar) -->
+    <section id="especialidades" class="bg-prapet-blue py-16 lg:py-24 text-white">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-10 lg:mb-12">
+          <h2 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight">
+            Cuidado especializado quando seu pet precisar
+          </h2>
+          <p class="text-sm sm:text-base text-white/90 mt-2">
+            Especialistas dedicados para diagnósticos precisos e tratamentos avançados.
+          </p>
+        </div>
+
+        <!-- Grade 4 colunas com 18 especialidades visíveis no mockup -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-12">
+          
+          <!-- Linha 1 -->
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Cardiologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Medicina felina
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Oftalmologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Ortopedia
+          </div>
+
+          <!-- Linha 2 -->
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Odontologia veterinária
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Dermatologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Endocrinologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Nefrologia e Urologia
+          </div>
+
+          <!-- Linha 3 -->
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Nutrição e Nutrologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Oncologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Anestesiologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Cirurgias
+          </div>
+
+          <!-- Linha 4 -->
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Emergência
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Medicina Intensiva Veterinária
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Fisioterapia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Diagnóstico por Imagem
+          </div>
+
+          <!-- Linha 5 (2 itens restantes, alinhados à esquerda) -->
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Patologia
+          </div>
+          <div class="prapet-card bg-prapet-light text-prapet-navy font-bold text-[17px] px-5 py-4 rounded-card flex items-center">
+            Medicina de Animais Silvestres
+          </div>
+
+        </div>
+
+        <!-- CTA centralizado da seção Especialidades -->
+        <div class="flex justify-center">
+          <a href="https://wa.me/5585921667824?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20um%20especialista%20no%20Prapet" target="_blank" rel="noopener noreferrer"
+             class="px-8 py-3.5 bg-prapet-red hover:bg-prapet-redHover text-white font-bold text-base rounded-btn transition-colors shadow-sm inline-flex items-center gap-2">
+            <span>Fale com o Prapet</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO: SOBRE O PRAPET -->
+    <section id="sobre" class="bg-prapet-light py-16 lg:py-24">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-prapet-blue mb-3 block">
+            SOBRE O PRAPET
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-prapet-navy leading-tight tracking-tight mb-5">
+            Um novo hospital veterinário popular no José Walter
+          </h2>
+          <p class="text-lg sm:text-[20px] text-prapet-navy leading-relaxed font-normal">
+            O Prapet reúne atendimento 24 horas, diferentes serviços e especialidades em um único lugar, uma proposta próxima, profissional e preparada para cuidar de cães e gatos no José Walter.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: PROPOSTA DE CUIDADO (Grid 2x2 em fundo Marinho) -->
+    <section class="bg-prapet-navy py-16 lg:py-24 text-white">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Título Centralizado -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-white leading-tight tracking-tight">
+            Uma proposta de cuidado preparada para diferentes necessidades
+          </h2>
+        </div>
+
+        <!-- Grade 2x2 de Cards Cinza Claro (#F2F2F2) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+          
+          <!-- Card 1 -->
+          <div class="prapet-card bg-prapet-surface rounded-card p-6 sm:p-7 text-prapet-navy flex flex-col justify-center">
+            <h3 class="text-xl font-bold mb-1">Hospital Veterinário Popular</h3>
+            <p class="text-base text-gray-700 font-normal">Cuidado veterinário pensado para ser mais acessível.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="prapet-card bg-prapet-surface rounded-card p-6 sm:p-7 text-prapet-navy flex flex-col justify-center">
+            <h3 class="text-xl font-bold mb-1">Atendimento 24h</h3>
+            <p class="text-base text-gray-700 font-normal">Suporte veterinário disponível durante 24 horas.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="prapet-card bg-prapet-surface rounded-card p-6 sm:p-7 text-prapet-navy flex flex-col justify-center">
+            <h3 class="text-xl font-bold mb-1">Serviços e especialidades</h3>
+            <p class="text-base text-gray-700 font-normal">Diferentes cuidados reunidos em um só lugar.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="prapet-card bg-prapet-surface rounded-card p-6 sm:p-7 text-prapet-navy flex flex-col justify-center">
+            <h3 class="text-xl font-bold mb-1">Cuidado para cães e gatos</h3>
+            <p class="text-base text-gray-700 font-normal">Atendimento pensado para diferentes necessidades.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO: LOCALIZAÇÃO (O Prapet está no José Walter) -->
+    <section id="localizacao" class="bg-prapet-light py-16 lg:py-24">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          <!-- Coluna Esquerda: Endereço & Descrição -->
+          <div class="lg:col-span-6 flex flex-col">
+            <h2 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-prapet-red leading-tight tracking-tight mb-5">
+              O Prapet está no José Walter
+            </h2>
+            
+            <address class="not-italic text-xl sm:text-2xl font-bold text-prapet-blue leading-snug mb-5">
+              Rua 46, nº 20<br>
+              Prefeito José Walter<br>
+              Fortaleza - CE
+            </address>
+
+            <p class="text-base sm:text-lg text-prapet-navy leading-relaxed max-w-lg mb-6">
+              O Hospital Veterinário Popular Prapet está localizado no bairro José Walter, atendendo também moradores dos bairros vizinhos com fácil acesso e comodidade.
+            </p>
+
+            <div class="flex flex-wrap gap-4 items-center">
+              <a href="https://maps.google.com/?q=Rua+46,+20,+Prefeito+José+Walter,+Fortaleza+-+CE" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 px-5 py-3 bg-white text-prapet-navy border border-prapet-blue/30 hover:border-prapet-blue font-bold text-sm rounded-btn transition-all shadow-sm">
+                <i class="fa-solid fa-diamond-turn-right text-prapet-blue"></i>
+                <span>Abrir rota no Google Maps</span>
+              </a>
+              <button onclick="copiarEndereco()" class="inline-flex items-center gap-2 px-4 py-3 bg-transparent text-prapet-navy hover:text-prapet-blue font-semibold text-sm transition-colors">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copyFeedback">Copiar endereço</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Mapa Interativo Real do Google -->
+          <div class="lg:col-span-6">
+            <div class="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square max-w-[480px] mx-auto rounded-card overflow-hidden shadow-md border-2 border-white/60 bg-white">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.082729904944!2d-38.55294572428586!3d-3.834316743477157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74e84457e5b29%3A0x6b8bc2eb8e535e61!2sR.%2046%2C%2020%20-%20Pref.%20Jos%C3%A9%20Walter%2C%20Fortaleza%20-%20CE%2C%2060750-600!5e0!3m2!1spt-BR!2sbr!4v1727395000000!5m2!1spt-BR!2sbr" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localização do Hospital Veterinário Prapet no José Walter, Fortaleza"
+                class="w-full h-full">
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: CTA FINAL (Sempre prontos. Sempre Prapet.) -->
+    <section id="contato" class="bg-prapet-navy py-20 lg:py-28 text-white text-center">
+      <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto flex flex-col items-center">
+          
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-prapet-light mb-3">
+            HOSPITAL VETERINÁRIO POPULAR • 24H
+          </span>
+
+          <h2 class="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-white leading-tight tracking-tight mb-5">
+            Sempre prontos.<br>Sempre Prapet.
+          </h2>
+
+          <p class="text-base sm:text-lg text-prapet-light font-normal leading-relaxed mb-8 max-w-xl">
+            O Hospital Veterinário Popular Prapet já está atendendo no José Walter, 24 horas por dia. Fale agora e agende o cuidado do seu pet.
+          </p>
+
+          <a href="https://wa.me/5585921667824?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20pelo%20site%20para%20falar%20com%20o%20Prapet" target="_blank" rel="noopener noreferrer"
+             class="px-8 py-3.5 bg-prapet-red hover:bg-prapet-redHover text-white font-bold text-base rounded-btn transition-colors shadow-md">
+            Fale com o Prapet
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ INSTITUCIONAL (#F2F2F2) -->
+  <footer class="bg-prapet-surface py-12 border-t border-gray-200/60">
+    <div class="max-w-prapet mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        
+        <!-- Informações e Contatos -->
+        <div class="text-[14px] sm:text-[15px] text-prapet-navy space-y-1.5 font-medium leading-relaxed">
+          <p class="font-bold text-prapet-navy">Sempre prontos. Sempre Prapet.</p>
+          <p>Rua 46, nº 20 - Prefeito José Walter - Fortaleza/CE</p>
+          <p>
+            WhatsApp: 
+            <a href="https://wa.me/5585921667824" target="_blank" rel="noopener noreferrer" class="hover:text-prapet-blue font-semibold underline underline-offset-2">
+              (85) 92166-7824
+            </a>
+          </p>
+          <p>
+            Instagram: 
+            <a href="https://instagram.com/hvprapet" target="_blank" rel="noopener noreferrer" class="hover:text-prapet-blue font-semibold">
+              @hvprapet
+            </a>
+          </p>
+        </div>
+
+        <!-- Símbolo da Marca Reduzido (SVG oficial no canto direito) -->
+        <div class="flex-shrink-0">
+          <a href="#hero" aria-label="Voltar ao início">
+            <div class="w-14 h-14 hover:scale-105 transition-transform">
+              <svg viewBox="0 0 120 120" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Coração estilizado em duas metades -->
+                <path d="M60 105C60 105 15 76 15 38C15 22 27 10 43 10C51.5 10 57 14 60 18C63 14 68.5 10 77 10C93 10 105 22 105 38C105 76 60 105 60 105Z" fill="#102F57"/>
+                <path d="M60 105C60 105 60 18 60 18C63 14 68.5 10 77 10C93 10 105 22 105 38C105 76 60 105 60 105Z" fill="#CC1019"/>
+                <path d="M43 28C38 31 34 37 34 45C34 56 42 66 52 70L60 72L68 70C78 66 86 56 86 45C86 37 82 31 77 28C72 35 68 46 60 48C52 46 48 35 43 28Z" fill="#FFFFFF"/>
+                <rect x="56" y="44" width="8" height="22" rx="2" fill="#CC1019"/>
+                <rect x="49" y="51" width="22" height="8" rx="2" fill="#CC1019"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Barra de Direitos e Horário -->
+      <div class="mt-8 pt-6 border-t border-gray-300/50 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-2">
+        <p>© 2026 Hospital Veterinário Prapet. Todos os direitos reservados.</p>
+        <p class="font-medium text-prapet-blue flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Plantão 24 horas todos os dias no José Walter
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante Rápido do WhatsApp (Mobile & Desktop) -->
+  <a href="https://wa.me/5585921667824?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20veterin%C3%A1rio%20para%20meu%20pet" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     aria-label="Falar no WhatsApp com o Hospital Prapet"
+     class="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20ba5a] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+  </a>
+
+  <script>
+    // Controle do Menu Mobile
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        if (isHidden) {
+          menuIcon.classList.remove('fa-xmark');
+          menuIcon.classList.add('fa-bars');
+        } else {
+          menuIcon.classList.remove('fa-bars');
+          menuIcon.classList.add('fa-xmark');
+        }
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('fa-xmark');
+          menuIcon.classList.add('fa-bars');
+        });
+      });
+    }
+
+    // Função para copiar endereço com feedback visual
+    function copiarEndereco() {
+      const enderecoTexto = "Rua 46, nº 20 - Prefeito José Walter, Fortaleza - CE, 60750-600";
+      
+      // Uso de técnica compatível com iframe
+      const tempInput = document.createElement("textarea");
+      tempInput.value = enderecoTexto;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        const feedback = document.getElementById('copyFeedback');
+        if (feedback) {
+          const original = feedback.innerText;
+          feedback.innerText = "Endereço copiado!";
+          feedback.classList.add("text-emerald-600", "font-bold");
+          setTimeout(() => {
+            feedback.innerText = original;
+            feedback.classList.remove("text-emerald-600", "font-bold");
+          }, 2500);
+        }
+      } catch (err) {
+        console.error("Erro ao copiar endereço:", err);
+      }
+      document.body.removeChild(tempInput);
+    }
+  </script>
+</body>
+</html>
